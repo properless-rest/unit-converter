@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles/index.css">
+        <link rel="stylesheet" href="./styles/placeholders.css">
+        <link rel="stylesheet" href="./styles/input-number.css">
+        <title>Converter</title>
+    </head>
+    <body>
+        <main id="main">
+            <section id="section-hero">
+                <div class="div-theme-switcher">
+                    <img src="./images/light-mode.webp" alt="light-mode-theme-switcher"                  id="switch-light" class="theme-selected">
+                    <img src="./images/dark-mode.webp" alt="dark-mode-theme-switcher"                    id="switch-dark">
+                </div>
+                <h1 class="title">Metric/Imperial Unit Conversion</h1>
+                <input class="input-value" type="number" min="0" max="999" 
+                       name="value" placeholder="0">
+                <p id="hint" class="range-hint invisible">Inadmissible value. Pick in range from 0 to 999</p>
+                <button class="btn-convert">Convert</button>
+            </section>
+            <section id="section-conversion">
+                <div class="div-units">
+                    <h3 class="unit">Length (Meters/Feet)</h3>
+                    <p id="length-conv" class="conversion">
+                        0 meters = 0 feet | 0 feet = 0 meters
+                    </p>
+                </div>
+                <div class="div-units">
+                    <h3 class="unit">Volume (Liters/Gallons)</h3>
+                    <p id="volume-conv" class="conversion">
+                        0 liters = 0 gallons | 0 gallons = 0 liters
+                    </p>
+                </div>
+                <div class="div-units">
+                    <h3 class="unit">Mass (Kilograms/Pounds)</h3>
+                    <p id="mass-conv" class="conversion">
+                        0 kilos = 0 pounds | 0 pounds = 0 kilos
+                    </p>
+                </div>
+            </section>
+        </main>
+        
+        <script type="module" src="./code/index.js"></script>
+    </body>
+</html>

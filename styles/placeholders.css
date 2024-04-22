@@ -1,0 +1,15 @@
+
+:root {
+    --placeholder: #efefef;
+}
+
+input::placeholder {
+  color: var(--placeholder);
+  opacity: 1; /* Firefox */
+  font-style: oblique;
+}
+
+::-ms-input-placeholder { /* Edge 12 -18 */
+  color: var(--placeholder);
+font-style: italic;
+}
