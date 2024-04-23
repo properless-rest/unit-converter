@@ -43,7 +43,6 @@ h1, h3, p {
 }
 
 #main {
-
     width: 550px;
     display: flex;
     flex-direction: column;
