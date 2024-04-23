@@ -11,5 +11,5 @@ input::placeholder {
 
 ::-ms-input-placeholder { /* Edge 12 -18 */
   color: var(--placeholder);
-font-style: italic;
+  font-style: italic;
 }

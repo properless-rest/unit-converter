@@ -4,11 +4,12 @@ export function switchToLightTheme() {
     darkSwitcher.classList.remove("theme-selected");
     lightSwitcher.classList.add("theme-selected");
     const { 
-        mainBorder, heroThemeSwitcher, heroThemeHover, 
+        bg, mainBorder, heroThemeSwitcher, heroThemeHover, 
         heroBg, heroText, heroInputBorder, 
         heroBtnBg, heroBtnBgHover, heroBtnTxt, 
         convBg, convDivBg, convDivUnit, convDivTxt 
     } = themeLight;
+    CSSRoot.style.setProperty('--bg', bg);
     CSSRoot.style.setProperty('--main-border', mainBorder);
     CSSRoot.style.setProperty('--hero-theme-switcher', heroThemeSwitcher);
     CSSRoot.style.setProperty('--hero-theme-hover', heroThemeHover);
@@ -29,11 +30,12 @@ export function switchToDarkTheme() {
     lightSwitcher.classList.remove("theme-selected");
     darkSwitcher.classList.add("theme-selected");
     const { 
-        mainBorder, heroThemeSwitcher, heroThemeHover, 
+        bg, mainBorder, heroThemeSwitcher, heroThemeHover, 
         heroBg, heroText, heroInputBorder, 
         heroBtnBg, heroBtnBgHover, heroBtnTxt, 
         convBg, convDivBg, convDivUnit, convDivTxt 
     } = themeDark;
+    CSSRoot.style.setProperty('--bg', bg);
     CSSRoot.style.setProperty('--main-border', mainBorder);
     CSSRoot.style.setProperty('--hero-theme-switcher', heroThemeSwitcher);
     CSSRoot.style.setProperty('--hero-theme-hover', heroThemeHover);
@@ -56,6 +58,7 @@ export const darkSwitcher = document.getElementById("switch-dark");
 const CSSRoot = document.documentElement;
 
 const themeLight = {
+    bg: "#f5f5f5",
     mainBorder: "#000000",
     heroThemeSwitcher: "#bae6fd",
     heroThemeHover: "#fafafa",
@@ -72,6 +75,7 @@ const themeLight = {
 }
     
 const themeDark = {
+    bg: "#d1d1d1",
     mainBorder: "#000000",
     heroThemeSwitcher: "#b295ff",
     heroThemeHover: "#dfdfdf",

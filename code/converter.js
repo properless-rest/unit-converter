@@ -6,7 +6,8 @@ function roundTo(number, digits) {
 
 
 export function convert(quantity, conversionRate) {
-    return roundTo(quantity * conversionRate, 3);
+    // if quantity * conversionRate equals 0, don't round 0 to 3 decimals after comma;
+    return quantity * conversionRate === 0 ? 0 : roundTo(quantity * conversionRate, 3);
 }
 
 
