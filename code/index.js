@@ -3,17 +3,17 @@ import { lightSwitcher, darkSwitcher, switchToLightTheme, switchToDarkTheme } fr
 
 
 function renderAdmissibleInput(inputValue) {
-    document.getElementById("length-conv").textContent = 
-        `${inputValue} meters = ${convert(inputValue, meterToFeet)} feet | ${inputValue} feet = ${convert(inputValue, footToMeters)} meters`;
-    document.getElementById("volume-conv").textContent = 
-        `${inputValue} liters = ${convert(inputValue, literToGallons)} gallons | ${inputValue} gallons = ${convert(inputValue, gallonToLiters)} liters`;
-    document.getElementById("mass-conv").textContent = 
-        `${inputValue} kilos = ${convert(inputValue, kiloToPounds)} pounds | ${inputValue} pounds = ${convert(inputValue, poundToKilos)} kilos`;   
+    document.getElementById("length-conv").innerHTML = 
+        `${inputValue} meters = ${convert(inputValue, meterToFeet)} feet |<br>${inputValue}&nbsp;feet = ${convert(inputValue, footToMeters)}&nbsp;meters`;
+    document.getElementById("volume-conv").innerHTML = 
+        `${inputValue} liters = ${convert(inputValue, literToGallons)} gallons |<br>${inputValue}&nbsp;gallons = ${convert(inputValue, gallonToLiters)}&nbsp;liters`;
+    document.getElementById("mass-conv").innerHTML = 
+        `${inputValue} kilos = ${convert(inputValue, kiloToPounds)} pounds |<br>${inputValue}&nbsp;pounds = ${convert(inputValue, poundToKilos)}&nbsp;kilos`;   
 }
 
 
-function renderInadmissibleInput(inputValue) {
-    inputEl.value = 0;
+function renderInadmissibleInput() {
+    inputEl.value = "";
     hintEl.classList.remove("invisible");
     timeOutId ? clearTimeout(timeOutId) : null;
     timeOutId = setTimeout(
@@ -30,11 +30,13 @@ function renderConvertedValues() {
         // don't do anything if nothing was input;
         return null;
     }
+    // "0.00", "0.0" and "0" will be rendered as 0 in converted metrics;
+    if (Number(inputValue) === 0) {inputValue = 0}
     // get rid of trailing zeroes if present;
     if (inputValue >=0 && inputValue <= 999) {
         renderAdmissibleInput(inputValue);
     } else {
-        renderInadmissibleInput(inputValue);
+        renderInadmissibleInput();
     }
 }
 
@@ -44,10 +46,12 @@ function validateInput(input) {
     if (input.length > 4) {
         input[3] != "." ? inputEl.value = input.substring(0, 4) : inputEl.value = input.substring(0, 3);
     } 
-    if (input.length === 2 && (input[0] === "0" && input[1] !== "0.")) {
-        inputEl.value = "0";
+    // prevent trailing zero & substitute with the input non-zero digit
+    if (input.length === 2 && (input[0] === "0" && input[1] !== ".")) {
+        inputEl.value = `${input[input.length - 1]}`;
+    // add decimals on absent integer zero (start typing a decimal with ".")
     } else if (input[0] === "." || input[0] === ",") {
-        inputEl.value = "0";
+        inputEl.value = `0.${input[input.length - 1]}`;
     }
 }
 
